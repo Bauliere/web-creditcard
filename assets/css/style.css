@@ -3,6 +3,7 @@
    ============================================================
    Autor: Santana Santanita | 2077 Empresa SA
 
+
    *** PALETAS DE COLOR ***
    Este archivo tiene 2 paletas predefinidas.
    Para cambiar de paleta, busca la sección "PALETA ACTIVA" 
@@ -15,6 +16,7 @@
    4.  Fondo e imagen
    5.  Navbar glassmorphism + menú móvil CSS-only
    6.  Layout principal
+   6.1 FIX Centrado vertical del panel (comentado — activar/desactivar)
    7.  Panel glassmorphism
    8.  Tarjeta de crédito — Estructura 3D y flip
    9.  Tarjeta de crédito — Frente
@@ -27,6 +29,7 @@
    16. Responsive
    17. Accesibilidad — Movimiento reducido
    ============================================================ */
+
 
 
 /* ============================================================
@@ -118,6 +121,7 @@
 }
 
 
+
 /* ============================================================
    2. PALETA ALTERNATIVA (COMENTADA)
    ============================================================
@@ -196,12 +200,14 @@
    FIN DE PALETA 2 */
 
 
+
 /* ============================================================
    3. RESET Y BASE
 ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--font-body);color:var(--text-primary);min-height:100dvh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6}
+
 
 
 /* ============================================================
@@ -212,6 +218,7 @@ body{font-family:var(--font-body);color:var(--text-primary);min-height:100dvh;di
 ============================================================ */
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url('../img/background.png');background-size:cover;background-position:center;background-repeat:no-repeat;z-index:-2}
 body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--color-bg-overlay-1) 0%,var(--color-bg-overlay-2) 50%,var(--color-bg-overlay-3) 100%);z-index:-1}
+
 
 
 /* ============================================================
@@ -239,11 +246,11 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .navbar-nav-custom .nav-link:hover,.navbar-nav-custom .nav-link.active{color:var(--color-pastel-1);background:rgba(255,255,255,0.05)}
 
 
+
 /* ============================================================
    6. LAYOUT PRINCIPAL
 ============================================================ */
 .main-content{flex:1;display:flex;align-items:center;justify-content:center;padding:100px 1rem 2rem;min-height:100dvh}
-
 
 /* ============================================================
    7. PANEL GLASSMORPHISM
@@ -259,6 +266,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .form-column{padding:2rem 2.5rem}
 
 
+
 /* ============================================================
    8. TARJETA — ESTRUCTURA 3D Y FLIP
    ============================================================
@@ -269,6 +277,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .credit-card-flip{position:relative;width:100%;aspect-ratio:1.586/1;transform-style:preserve-3d;transition:transform var(--t-flip) var(--ease-in-out)}
 .credit-card-flip.flipped{transform:rotateY(180deg)}
 .credit-card-front,.credit-card-back{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:var(--radius-lg);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between}
+
 
 
 /* ============================================================
@@ -310,6 +319,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .credit-card-wrapper:hover .credit-card-front::after{left:150%}
 
 
+
 /* ============================================================
    10. TARJETA — REVERSO
    ============================================================
@@ -323,6 +333,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .cvv-display{font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#1a0a10;letter-spacing:4px}
 .card-back-info{margin-top:auto;padding:0 1rem}
 .card-back-text{font-size:.6rem;color:var(--text-muted);text-align:center;line-height:1.4}
+
 
 
 /* ============================================================
@@ -351,6 +362,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .expiry-cvv-row{margin-bottom:1.5rem}
 
 
+
 /* ============================================================
    12. BOTÓN DE PAGO
    ============================================================
@@ -372,17 +384,20 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .btn-pay.success{background:linear-gradient(135deg,#2e7d32,#4caf50,#66bb6a)!important;animation:successGlow 1.5s ease}
 
 
+
 /* ============================================================
    13. FOOTER GLASSMORPHISM
    ============================================================
    Para cambiar fondo → modifica background
    Para cambiar borde superior → modifica border-top
+   Para cambiar altura → modifica padding-top y padding-bottom
 ============================================================ */
 .glass-footer{background:rgba(26,10,16,0.6);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border-top:1px solid var(--glass-border);padding:2.5rem 0;margin-top:auto;overflow:visible;position:relative;z-index:50}
 .footer-brand{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);color:var(--color-pastel-1)}
 .footer-dev{font-size:var(--text-xs);color:var(--text-muted)}
 .footer-credit{font-size:var(--text-xs);color:var(--text-muted);text-decoration:none;transition:color var(--t-fast) var(--ease-out)}
 .footer-credit:hover{color:var(--color-pastel-1)}
+
 
 
 /* ============================================================
@@ -408,9 +423,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     height:46px;
     --spread: 55px; /* Distancia del centro a cada ícono */
 }
-/* Zona de hover invisible que cubre todo el área de los íconos desplegados.
-   Esto evita que el menú se cierre al mover el cursor hacia un ícono.
-   Para agrandar/achicar la zona → modifica el inset negativo */
 .share-orbit-container::before{
     content:'';
     position:absolute;
@@ -426,7 +438,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     pointer-events:auto;
 }
 
-/* Botón central con pulso sutil */
 .share-btn-center{
     position:absolute;
     top:50%;left:50%;
@@ -444,7 +455,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     animation:sharePulse 3s ease-in-out infinite;
 }
 
-/* Hover: giro + escala con efecto bounce */
 .share-orbit-container:hover .share-btn-center{
     transform:translate(-50%,-50%) rotate(180deg) scale(1.12);
     box-shadow:
@@ -454,7 +464,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     animation:none;
 }
 
-/* Íconos de redes en órbita */
 .orbit-icon{
     position:absolute;
     top:50%;left:50%;
@@ -465,7 +474,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     text-decoration:none;
     opacity:0;
     transform:translate(-50%,-50%) scale(0);
-    /* Al CERRAR: animación suave con delay para dar tiempo al usuario */
     transition:
         transform .4s .25s cubic-bezier(.4,0,.2,1),
         opacity .3s .25s ease;
@@ -473,49 +481,41 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     box-shadow:0 3px 12px rgba(0,0,0,0.35);
 }
 
-/* Hover individual: brillo + escala */
 .orbit-icon:hover{
     transform:translate(-50%,-50%) translate(var(--ox),var(--oy)) scale(1.25)!important;
     filter:brightness(1.2);
     box-shadow:0 4px 20px rgba(0,0,0,0.4);
 }
 
-/* Imagen redonda para ícono personalizado (bauliere) */
 .orbit-icon .orbit-img{
     width:100%;height:100%;
     border-radius:50%;
     object-fit:cover;
 }
 
-/* Posiciones: CRUZ — arriba, izquierda, derecha, arriba-izq, arriba-der
-   Solo se expande hacia ARRIBA y lados para no salir del footer */
-/* 4 íconos en diamante: arriba, izq, der, abajo — todo centrado sobre el botón */
-.orbit-1{--ox: calc(-1 * var(--spread)); --oy: 0px;                        background:var(--color-linkedin)}   /* Izquierda */
-.orbit-2{--ox: 0px;                      --oy: calc(-1 * var(--spread));   background:var(--color-github)}     /* Arriba */
-.orbit-3{--ox: calc(var(--spread));       --oy: 0px;                        background:var(--color-hostinger)}  /* Derecha */
-.orbit-4{--ox: 0px;                      --oy: var(--spread);              background:var(--color-bauliere);overflow:hidden}  /* Abajo */
+.orbit-1{--ox: calc(-1 * var(--spread)); --oy: 0px;                        background:var(--color-linkedin)}
+.orbit-2{--ox: 0px;                      --oy: calc(-1 * var(--spread));   background:var(--color-github)}
+.orbit-3{--ox: calc(var(--spread));       --oy: 0px;                        background:var(--color-hostinger)}
+.orbit-4{--ox: 0px;                      --oy: var(--spread);              background:var(--color-bauliere);overflow:hidden}
 
-/* Al hacer hover, todos los íconos salen con bounce */
 .share-orbit-container:hover .orbit-icon{
     opacity:1;
     transform:translate(-50%,-50%) translate(var(--ox),var(--oy)) scale(1);
-    /* Al ABRIR: animación rápida con bounce (sobreescribe el delay de cierre) */
     transition:
         transform .55s cubic-bezier(.34,1.56,.64,1),
         opacity .3s ease;
 }
 
-/* Delays escalonados para efecto cascada al abrir */
 .share-orbit-container:hover .orbit-1{transition-delay:0s}
 .share-orbit-container:hover .orbit-2{transition-delay:.07s}
 .share-orbit-container:hover .orbit-3{transition-delay:.14s}
 .share-orbit-container:hover .orbit-4{transition-delay:.21s}
 
-/* Pulso sutil del botón central para invitar al hover */
 @keyframes sharePulse{
     0%,100%{box-shadow:0 4px 15px rgba(0,0,0,0.3),0 0 0 0 rgba(201,72,91,0.3),inset 0 2px 4px rgba(255,255,255,0.15)}
     50%{box-shadow:0 4px 15px rgba(0,0,0,0.3),0 0 0 8px rgba(201,72,91,0),inset 0 2px 4px rgba(255,255,255,0.15)}
 }
+
 
 
 /* ============================================================
@@ -541,6 +541,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .btn-pay{animation-delay:.45s}
 .security-text{animation-delay:.55s}
 .credit-card-wrapper{animation:fadeInUp .7s var(--ease-out) .1s both}
+
 
 
 /* ============================================================
@@ -578,7 +579,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     .form-column{padding:1rem 1.25rem 1.5rem}
     .glass-footer{padding:1rem 0}
     .footer-brand{font-size:.9rem}
-    /* Órbita más pequeña en móvil */
     .share-orbit-container{--spread:45px}
     .orbit-icon{width:30px;height:30px;font-size:.75rem}
     .share-btn-center{width:40px;height:40px;font-size:1rem}
@@ -606,6 +606,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
     .form-subtitle{margin-bottom:1rem}
     .glass-navbar{padding:.4rem 0}
 }
+
 
 
 /* ============================================================
