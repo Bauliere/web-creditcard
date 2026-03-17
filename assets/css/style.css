@@ -1,0 +1,617 @@
+/* ============================================================
+   CREDIT CARD PAYMENT — ESTILOS PRINCIPALES
+   ============================================================
+   Autor: Santana Santanita | 2077 Empresa SA
+
+   *** PALETAS DE COLOR ***
+   Este archivo tiene 2 paletas predefinidas.
+   Para cambiar de paleta, busca la sección "PALETA ACTIVA" 
+   y comenta/descomenta el bloque deseado.
+   
+   TABLA DE CONTENIDO:
+   1.  Variables — Paleta activa + tokens de diseño
+   2.  Paleta alternativa (comentada)
+   3.  Reset y base
+   4.  Fondo e imagen
+   5.  Navbar glassmorphism + menú móvil CSS-only
+   6.  Layout principal
+   7.  Panel glassmorphism
+   8.  Tarjeta de crédito — Estructura 3D y flip
+   9.  Tarjeta de crédito — Frente
+   10. Tarjeta de crédito — Reverso
+   11. Formulario — Títulos, inputs, selects
+   12. Botón de pago
+   13. Footer glassmorphism
+   14. Botón de compartir con órbita de redes sociales
+   15. Animaciones @keyframes
+   16. Responsive
+   17. Accesibilidad — Movimiento reducido
+   ============================================================ */
+
+
+/* ============================================================
+   1. VARIABLES — PALETA ACTIVA
+   ============================================================
+   ╔══════════════════════════════════════════════════════╗
+   ║  PALETA 1: ROJO OSCURO / BORGOÑA                    ║
+   ║  Fondo oscuro carmesí con acentos rosa pastel        ║
+   ║  Para activar Paleta 2, comenta este bloque y        ║
+   ║  descomenta el bloque de la sección 2.               ║
+   ╚══════════════════════════════════════════════════════╝
+   
+============================================================ */
+:root {
+    /* ── Fuentes ── */
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Poppins', 'Segoe UI', sans-serif;
+
+    /* ── Fondos ── */
+    --color-bg-dark: #1a0a10;
+    --color-bg-overlay-1: rgba(26, 10, 16, 0.75);
+    --color-bg-overlay-2: rgba(45, 15, 26, 0.65);
+    --color-bg-overlay-3: rgba(26, 5, 16, 0.80);
+
+    /* ── Acentos ── */
+    --color-accent: #c9485b;
+    --color-accent-hover: #e05468;
+    --color-accent-dark: #8b2a3a;
+    --color-accent-burgundy: #6b1d33;
+
+    /* ── Pastel ── */
+    --color-pastel-1: #f8c8dc;        /* Rosa pastel */
+    --color-pastel-2: #e8d0f0;        /* Lavanda */
+    --color-pastel-3: #ffe0d6;        /* Durazno */
+
+    /* ── Glassmorphism ── */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg-hover: rgba(255, 255, 255, 0.09);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-blur: 20px;
+    --glass-blur-heavy: 30px;
+
+    /* ── Texto ── */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.45);
+    --text-card: #e0e0e0;
+
+    /* ── Tarjeta de crédito gradiente ── */
+    --card-grad-1: #3d1225;
+    --card-grad-2: #5a1a35;
+    --card-grad-3: #7a2845;
+    --card-grad-4: #4a1428;
+
+    /* ── Bordes redondeados ── */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 50px;
+
+    /* ── Sombras ── */
+    --shadow-card: 0 8px 32px rgba(0,0,0,0.4);
+    --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.5);
+    --shadow-input-focus: 0 0 0 3px rgba(201,72,91,0.25), 0 2px 8px rgba(0,0,0,0.2);
+    --shadow-btn: 0 4px 20px rgba(201,72,91,0.4);
+    --shadow-btn-hover: 0 6px 30px rgba(201,72,91,0.6);
+
+    /* ── Transiciones ── */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --t-fast: 180ms;
+    --t-medium: 300ms;
+    --t-slow: 500ms;
+    --t-flip: 600ms;
+
+    /* ── Texto fluido ── */
+    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+    --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+    --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+
+    /* ── Redes sociales colores ── */
+    --color-linkedin: #0a66c2;
+    --color-github: #333333;
+    --color-hostinger: #673de6;
+    --color-bauliere: #8b1a2b;
+}
+
+
+/* ============================================================
+   2. PALETA ALTERNATIVA (COMENTADA)
+   ============================================================
+   ╔══════════════════════════════════════════════════════╗
+   ║  PALETA 2: AZUL OSCURO / PÚRPURA PASTEL             ║
+   ║  Para activarla:                                     ║
+   ║  1. Comenta TODO el bloque :root de arriba           ║
+   ║  2. Descomenta el bloque :root de abajo              ║
+   ║  3. Cambia la imagen de fondo si lo deseas           ║
+   ╚══════════════════════════════════════════════════════╝
+
+:root {
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-display: 'Poppins', 'Segoe UI', sans-serif;
+
+    --color-bg-dark: #0a0e1a;
+    --color-bg-overlay-1: rgba(10, 14, 26, 0.75);
+    --color-bg-overlay-2: rgba(15, 20, 45, 0.65);
+    --color-bg-overlay-3: rgba(10, 12, 26, 0.80);
+
+    --color-accent: #7c5cbf;
+    --color-accent-hover: #9b7de0;
+    --color-accent-dark: #5a3d8f;
+    --color-accent-burgundy: #3d2570;
+
+    --color-pastel-1: #d4c8f8;
+    --color-pastel-2: #c8dcf8;
+    --color-pastel-3: #e0d6ff;
+
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg-hover: rgba(255, 255, 255, 0.09);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-blur: 20px;
+    --glass-blur-heavy: 30px;
+
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.45);
+    --text-card: #e0e0e0;
+
+    --card-grad-1: #1a1a3e;
+    --card-grad-2: #2a2055;
+    --card-grad-3: #3d2870;
+    --card-grad-4: #1e1535;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 50px;
+
+    --shadow-card: 0 8px 32px rgba(0,0,0,0.4);
+    --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.5);
+    --shadow-input-focus: 0 0 0 3px rgba(124,92,191,0.25), 0 2px 8px rgba(0,0,0,0.2);
+    --shadow-btn: 0 4px 20px rgba(124,92,191,0.4);
+    --shadow-btn-hover: 0 6px 30px rgba(124,92,191,0.6);
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --t-fast: 180ms;
+    --t-medium: 300ms;
+    --t-slow: 500ms;
+    --t-flip: 600ms;
+
+    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+    --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+    --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+
+    --color-linkedin: #0a66c2;
+    --color-github: #333333;
+    --color-hostinger: #673de6;
+    --color-bauliere: #8b1a2b;
+}
+   FIN DE PALETA 2 */
+
+
+/* ============================================================
+   3. RESET Y BASE
+============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font-body);color:var(--text-primary);min-height:100dvh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6}
+
+
+/* ============================================================
+   4. FONDO E IMAGEN
+   ============================================================
+   Para cambiar la imagen → reemplaza background.png en assets/img/
+   Para ajustar la opacidad del overlay → modifica rgba en body::after
+============================================================ */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url('../img/background.png');background-size:cover;background-position:center;background-repeat:no-repeat;z-index:-2}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--color-bg-overlay-1) 0%,var(--color-bg-overlay-2) 50%,var(--color-bg-overlay-3) 100%);z-index:-1}
+
+
+/* ============================================================
+   5. NAVBAR GLASSMORPHISM + MENÚ MÓVIL CSS-ONLY
+   ============================================================
+   Para cambiar fondo del navbar → modifica background
+   Para cambiar blur → modifica backdrop-filter
+============================================================ */
+.glass-navbar{background:rgba(26,10,16,0.7);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border-bottom:1px solid var(--glass-border);padding:.75rem 0;z-index:1000}
+.brand-text{font-family:var(--font-display);font-weight:700;font-size:var(--text-lg);background:linear-gradient(135deg,var(--color-pastel-1),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-logo{color:var(--color-pastel-1);transition:transform var(--t-fast) var(--ease-out)}
+.navbar-brand:hover .brand-logo{transform:scale(1.1) rotate(-5deg)}
+
+/* Checkbox oculto para menú móvil */
+.nav-toggle-checkbox{display:none}
+.navbar-toggler-custom{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;cursor:pointer;border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:8px;background:transparent;z-index:1001}
+.toggler-bar{display:block;width:22px;height:2px;background:var(--color-pastel-1);border-radius:2px;transition:transform var(--t-medium) var(--ease-out),opacity var(--t-medium) var(--ease-out)}
+.nav-toggle-checkbox:checked~.navbar-toggler-custom .toggler-bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle-checkbox:checked~.navbar-toggler-custom .toggler-bar:nth-child(2){opacity:0}
+.nav-toggle-checkbox:checked~.navbar-toggler-custom .toggler-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.navbar-collapse-custom{display:flex;align-items:center;margin-left:auto}
+.navbar-nav-custom{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+.navbar-nav-custom .nav-link{color:var(--text-secondary);font-size:var(--text-sm);font-weight:500;padding:.5rem 1rem;border-radius:var(--radius-sm);text-decoration:none;transition:color var(--t-fast) var(--ease-out),background var(--t-fast) var(--ease-out)}
+.navbar-nav-custom .nav-link:hover,.navbar-nav-custom .nav-link.active{color:var(--color-pastel-1);background:rgba(255,255,255,0.05)}
+
+
+/* ============================================================
+   6. LAYOUT PRINCIPAL
+============================================================ */
+.main-content{flex:1;display:flex;align-items:center;justify-content:center;padding:100px 1rem 2rem;min-height:100dvh}
+
+
+/* ============================================================
+   7. PANEL GLASSMORPHISM
+   ============================================================
+   Para cambiar opacidad del cristal → modifica background alpha
+   Para cambiar blur → modifica --glass-blur-heavy
+   Para cambiar borde redondeado → modifica --radius-xl
+   Para cambiar grosor del borde → modifica border
+============================================================ */
+.payment-container{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur-heavy));-webkit-backdrop-filter:blur(var(--glass-blur-heavy));border:1px solid var(--glass-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-card);max-width:920px;width:100%;overflow:hidden;transition:box-shadow var(--t-medium) var(--ease-out),transform var(--t-medium) var(--ease-out)}
+.payment-container:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-2px)}
+.card-column{display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem}
+.form-column{padding:2rem 2.5rem}
+
+
+/* ============================================================
+   8. TARJETA — ESTRUCTURA 3D Y FLIP
+   ============================================================
+   Para cambiar velocidad del giro → --t-flip
+   Para cambiar tamaño de tarjeta → max-width
+============================================================ */
+.credit-card-wrapper{perspective:1000px;width:100%;max-width:360px}
+.credit-card-flip{position:relative;width:100%;aspect-ratio:1.586/1;transform-style:preserve-3d;transition:transform var(--t-flip) var(--ease-in-out)}
+.credit-card-flip.flipped{transform:rotateY(180deg)}
+.credit-card-front,.credit-card-back{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:var(--radius-lg);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between}
+
+
+/* ============================================================
+   9. TARJETA — FRENTE
+   ============================================================
+   Para cambiar color de la tarjeta → modifica --card-grad-1..4
+   Para cambiar borde → modifica border
+============================================================ */
+.credit-card-front{background:linear-gradient(135deg,var(--card-grad-1) 0%,var(--card-grad-2) 30%,var(--card-grad-3) 60%,var(--card-grad-4) 100%);border:1px solid rgba(255,255,255,0.15);box-shadow:0 10px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1);animation:borderGlow 4s ease-in-out infinite}
+
+/* Decoraciones circulares flotantes */
+.card-bg-decoration{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.card-circle{position:absolute;border-radius:50%;opacity:.08}
+.card-circle-1{width:200px;height:200px;background:var(--color-pastel-1);top:-60px;right:-40px;animation:floatCircle 8s ease-in-out infinite}
+.card-circle-2{width:150px;height:150px;background:var(--color-pastel-2);bottom:-40px;left:-30px;animation:floatCircle 10s ease-in-out infinite reverse}
+
+/* Chip */
+.card-top-row{display:flex;justify-content:space-between;align-items:flex-start}
+.card-chip{width:45px;height:34px;background:linear-gradient(135deg,#f0d98c,#c4a44a,#f0d98c);border-radius:6px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;padding:4px;box-shadow:0 2px 4px rgba(0,0,0,0.2)}
+.chip-line{background:rgba(180,150,80,0.4);border-radius:1px}
+
+/* Tipo de tarjeta */
+.card-type{font-family:var(--font-display);font-weight:800;font-size:1.4rem;letter-spacing:2px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.3);transition:opacity var(--t-fast) var(--ease-out)}
+
+/* Número */
+.card-number{display:flex;gap:.75rem;font-family:'Courier New',monospace;font-size:clamp(1rem,.9rem + .8vw,1.35rem);font-weight:600;letter-spacing:1.5px;color:var(--text-card);text-shadow:0 1px 3px rgba(0,0,0,0.3)}
+.num-group{display:inline-block;transition:transform var(--t-fast) var(--ease-out),color var(--t-fast)}
+.num-group.pop{animation:digitPop .3s var(--ease-out)}
+
+/* Info inferior */
+.card-info-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.card-holder-info,.card-expiry-info{display:flex;flex-direction:column;gap:2px}
+.card-label{font-size:.55rem;font-weight:600;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase}
+.card-holder-name,.card-expiry{font-size:clamp(.75rem,.7rem + .3vw,.9rem);font-weight:600;letter-spacing:1px;color:var(--text-card);text-transform:uppercase;transition:transform var(--t-fast) var(--ease-out)}
+.card-holder-name.slide,.card-expiry.slide{animation:textSlide .3s var(--ease-out)}
+
+/* Shimmer en hover */
+.credit-card-front::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);pointer-events:none;transition:left .8s ease}
+.credit-card-wrapper:hover .credit-card-front::after{left:150%}
+
+
+/* ============================================================
+   10. TARJETA — REVERSO
+   ============================================================
+   Para cambiar color del reverso → modifica background
+============================================================ */
+.credit-card-back{background:linear-gradient(135deg,#2d0f1a,#4a1428,#3d1225);border:1px solid rgba(255,255,255,0.15);box-shadow:0 10px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1);transform:rotateY(180deg);padding-top:2rem}
+.magnetic-strip{width:100%;height:42px;background:linear-gradient(90deg,#1a1a2e,#2a2a3e,#1a1a2e);margin-bottom:1.5rem}
+.cvv-section{display:flex;align-items:center;gap:.75rem;padding:0 1rem}
+.cvv-label{font-size:.7rem;font-weight:600;letter-spacing:1.5px;color:var(--text-secondary)}
+.cvv-band{flex:1;background:rgba(255,255,255,0.85);border-radius:var(--radius-sm);padding:.5rem 1rem;text-align:right}
+.cvv-display{font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#1a0a10;letter-spacing:4px}
+.card-back-info{margin-top:auto;padding:0 1rem}
+.card-back-text{font-size:.6rem;color:var(--text-muted);text-align:center;line-height:1.4}
+
+
+/* ============================================================
+   11. FORMULARIO — TÍTULOS, INPUTS, SELECTS
+   ============================================================
+   Para cambiar borde de inputs → modifica border en .form-control-custom
+   Para cambiar radio de inputs → modifica --radius-md
+   Para cambiar color del borde en focus → modifica --shadow-input-focus
+============================================================ */
+.form-group{margin-bottom:1.25rem}
+.form-title{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--text-primary);margin-bottom:.25rem}
+.form-subtitle{font-size:var(--text-sm);color:var(--text-muted);margin-bottom:2rem}
+.form-label-custom{display:block;font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);margin-bottom:.5rem}
+.input-wrapper{position:relative}
+.form-control-custom{width:100%;padding:.75rem 1rem;padding-right:2.75rem;background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);border-radius:var(--radius-md);color:var(--text-primary);font-size:var(--text-base);font-family:var(--font-body);outline:none;transition:border-color var(--t-fast) var(--ease-out),box-shadow var(--t-fast) var(--ease-out),background var(--t-fast) var(--ease-out)}
+.form-control-custom::placeholder{color:var(--text-muted)}
+.form-control-custom:hover{background:var(--glass-bg-hover);border-color:rgba(255,255,255,0.2)}
+.form-control-custom:focus{border-color:var(--color-accent);box-shadow:var(--shadow-input-focus);background:rgba(255,255,255,0.08)}
+.form-control-custom.is-invalid{border-color:#ff4d6d;box-shadow:0 0 0 3px rgba(255,77,109,0.2)}
+.input-icon{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:1.1rem;pointer-events:none;transition:color var(--t-fast) var(--ease-out)}
+.form-control-custom:focus~.input-icon{color:var(--color-pastel-1)}
+
+/* Selects */
+.select-custom{padding-right:2rem;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3e%3cpath fill='rgba(255,255,255,0.5)' d='M6 8.5L1 3.5h10z'/%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right .75rem center;cursor:pointer}
+.select-custom option{background:#2d0f1a;color:#fff}
+.expiry-cvv-row{margin-bottom:1.5rem}
+
+
+/* ============================================================
+   12. BOTÓN DE PAGO
+   ============================================================
+   Para cambiar colores del botón → modifica linear-gradient
+   Para cambiar borde redondeado → --radius-full
+============================================================ */
+.btn-pay{width:100%;padding:.85rem 2rem;background:linear-gradient(135deg,var(--color-accent),var(--color-accent-burgundy),var(--color-accent-dark),var(--color-accent));background-size:300% 300%;color:#fff;font-family:var(--font-display);font-size:var(--text-base);font-weight:600;letter-spacing:.5px;border:none;border-radius:var(--radius-full);cursor:pointer;position:relative;overflow:hidden;transition:transform var(--t-fast) var(--ease-out),box-shadow var(--t-fast) var(--ease-out);box-shadow:var(--shadow-btn);animation:gradientShift 4s ease infinite;margin-top:.5rem}
+.btn-pay:hover{transform:translateY(-2px);box-shadow:var(--shadow-btn-hover)}
+.btn-pay:active{transform:translateY(0) scale(.98);box-shadow:var(--shadow-btn)}
+.btn-pay::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:left .5s ease}
+.btn-pay:hover::after{left:100%}
+.btn-pay:disabled{cursor:not-allowed;opacity:.7;transform:none}
+.security-text{font-size:var(--text-xs);color:var(--text-muted);text-align:center;margin-top:1rem}
+
+/* Estado loading del botón */
+.btn-pay .btn-loading{display:none}
+.btn-pay.loading .btn-text{display:none}
+.btn-pay.loading .btn-loading{display:inline-flex;align-items:center;gap:.5rem}
+.btn-pay.success{background:linear-gradient(135deg,#2e7d32,#4caf50,#66bb6a)!important;animation:successGlow 1.5s ease}
+
+
+/* ============================================================
+   13. FOOTER GLASSMORPHISM
+   ============================================================
+   Para cambiar fondo → modifica background
+   Para cambiar borde superior → modifica border-top
+============================================================ */
+.glass-footer{background:rgba(26,10,16,0.6);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border-top:1px solid var(--glass-border);padding:2.5rem 0;margin-top:auto;overflow:visible;position:relative;z-index:50}
+.footer-brand{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);color:var(--color-pastel-1)}
+.footer-dev{font-size:var(--text-xs);color:var(--text-muted)}
+.footer-credit{font-size:var(--text-xs);color:var(--text-muted);text-decoration:none;transition:color var(--t-fast) var(--ease-out)}
+.footer-credit:hover{color:var(--color-pastel-1)}
+
+
+/* ============================================================
+   14. BOTÓN DE COMPARTIR — CRUZ EXPANDIBLE HACIA ARRIBA
+   ============================================================
+   - Un botón central con ícono de compartir + animación pulso
+   - Al hacer hover, 4 íconos salen en cruz hacia arriba
+   - Todo contenido DENTRO del footer sin desbordar
+   - Puro CSS con :hover (sin JavaScript)
+   
+   Para cambiar el tamaño del botón central → modifica .share-btn-center
+   Para cambiar la distancia de los íconos → modifica --spread
+   Para cambiar los colores de cada red → modifica .orbit-N background
+   Para cambiar los links → modifica los href en el HTML
+============================================================ */
+.share-orbit-wrapper{
+    display:inline-block;
+    position:relative;
+}
+.share-orbit-container{
+    position:relative;
+    width:46px;
+    height:46px;
+    --spread: 55px; /* Distancia del centro a cada ícono */
+}
+/* Zona de hover invisible que cubre todo el área de los íconos desplegados.
+   Esto evita que el menú se cierre al mover el cursor hacia un ícono.
+   Para agrandar/achicar la zona → modifica el inset negativo */
+.share-orbit-container::before{
+    content:'';
+    position:absolute;
+    top:50%;left:50%;
+    width:calc(var(--spread) * 2 + 80px);
+    height:calc(var(--spread) * 2 + 80px);
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    z-index:1;
+    pointer-events:none;
+}
+.share-orbit-container:hover::before{
+    pointer-events:auto;
+}
+
+/* Botón central con pulso sutil */
+.share-btn-center{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:46px;height:46px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,var(--color-accent),var(--color-accent-dark));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:1.1rem;
+    cursor:pointer;z-index:10;
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.15);
+    transition:transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    animation:sharePulse 3s ease-in-out infinite;
+}
+
+/* Hover: giro + escala con efecto bounce */
+.share-orbit-container:hover .share-btn-center{
+    transform:translate(-50%,-50%) rotate(180deg) scale(1.12);
+    box-shadow:
+        0 0 25px rgba(201,72,91,0.5),
+        0 0 50px rgba(201,72,91,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.15);
+    animation:none;
+}
+
+/* Íconos de redes en órbita */
+.orbit-icon{
+    position:absolute;
+    top:50%;left:50%;
+    width:36px;height:36px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:.9rem;
+    text-decoration:none;
+    opacity:0;
+    transform:translate(-50%,-50%) scale(0);
+    /* Al CERRAR: animación suave con delay para dar tiempo al usuario */
+    transition:
+        transform .4s .25s cubic-bezier(.4,0,.2,1),
+        opacity .3s .25s ease;
+    z-index:5;
+    box-shadow:0 3px 12px rgba(0,0,0,0.35);
+}
+
+/* Hover individual: brillo + escala */
+.orbit-icon:hover{
+    transform:translate(-50%,-50%) translate(var(--ox),var(--oy)) scale(1.25)!important;
+    filter:brightness(1.2);
+    box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Imagen redonda para ícono personalizado (bauliere) */
+.orbit-icon .orbit-img{
+    width:100%;height:100%;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+/* Posiciones: CRUZ — arriba, izquierda, derecha, arriba-izq, arriba-der
+   Solo se expande hacia ARRIBA y lados para no salir del footer */
+/* 4 íconos en diamante: arriba, izq, der, abajo — todo centrado sobre el botón */
+.orbit-1{--ox: calc(-1 * var(--spread)); --oy: 0px;                        background:var(--color-linkedin)}   /* Izquierda */
+.orbit-2{--ox: 0px;                      --oy: calc(-1 * var(--spread));   background:var(--color-github)}     /* Arriba */
+.orbit-3{--ox: calc(var(--spread));       --oy: 0px;                        background:var(--color-hostinger)}  /* Derecha */
+.orbit-4{--ox: 0px;                      --oy: var(--spread);              background:var(--color-bauliere);overflow:hidden}  /* Abajo */
+
+/* Al hacer hover, todos los íconos salen con bounce */
+.share-orbit-container:hover .orbit-icon{
+    opacity:1;
+    transform:translate(-50%,-50%) translate(var(--ox),var(--oy)) scale(1);
+    /* Al ABRIR: animación rápida con bounce (sobreescribe el delay de cierre) */
+    transition:
+        transform .55s cubic-bezier(.34,1.56,.64,1),
+        opacity .3s ease;
+}
+
+/* Delays escalonados para efecto cascada al abrir */
+.share-orbit-container:hover .orbit-1{transition-delay:0s}
+.share-orbit-container:hover .orbit-2{transition-delay:.07s}
+.share-orbit-container:hover .orbit-3{transition-delay:.14s}
+.share-orbit-container:hover .orbit-4{transition-delay:.21s}
+
+/* Pulso sutil del botón central para invitar al hover */
+@keyframes sharePulse{
+    0%,100%{box-shadow:0 4px 15px rgba(0,0,0,0.3),0 0 0 0 rgba(201,72,91,0.3),inset 0 2px 4px rgba(255,255,255,0.15)}
+    50%{box-shadow:0 4px 15px rgba(0,0,0,0.3),0 0 0 8px rgba(201,72,91,0),inset 0 2px 4px rgba(255,255,255,0.15)}
+}
+
+
+/* ============================================================
+   15. ANIMACIONES @KEYFRAMES
+============================================================ */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-in-up{animation:fadeInUp .8s var(--ease-out) both}
+
+@keyframes floatCircle{0%,100%{transform:translate(0,0)}33%{transform:translate(10px,-10px)}66%{transform:translate(-5px,5px)}}
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes borderGlow{0%,100%{box-shadow:0 10px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1)}50%{box-shadow:0 10px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1),0 0 15px rgba(248,200,220,0.1)}}
+@keyframes digitPop{0%{transform:scale(1);opacity:.6}50%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@keyframes textSlide{from{transform:translateY(4px);opacity:.5}to{transform:translateY(0);opacity:1}}
+@keyframes successGlow{0%{box-shadow:0 0 0 0 rgba(76,175,80,0.4)}70%{box-shadow:0 0 0 15px rgba(76,175,80,0)}100%{box-shadow:0 0 0 0 rgba(76,175,80,0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.shake{animation:shake .5s var(--ease-out)}
+
+/* Entrada escalonada */
+.form-group,.expiry-cvv-row,.btn-pay,.security-text{animation:fadeInUp .6s var(--ease-out) both}
+.form-group:nth-child(1){animation-delay:.15s}
+.form-group:nth-child(2){animation-delay:.25s}
+.expiry-cvv-row{animation-delay:.35s}
+.btn-pay{animation-delay:.45s}
+.security-text{animation-delay:.55s}
+.credit-card-wrapper{animation:fadeInUp .7s var(--ease-out) .1s both}
+
+
+/* ============================================================
+   16. RESPONSIVE
+============================================================ */
+
+/* ── Tablets (992px) ── */
+@media(max-width:991.98px){
+    .main-content{padding-top:90px;padding-bottom:1.5rem}
+    .payment-container{max-width:600px}
+    .credit-card-wrapper{max-width:340px;margin:0 auto}
+    .navbar-toggler-custom{display:flex}
+    .navbar-collapse-custom{position:absolute;top:100%;left:0;right:0;background:rgba(26,10,16,0.98);backdrop-filter:blur(var(--glass-blur-heavy));-webkit-backdrop-filter:blur(var(--glass-blur-heavy));border-bottom:1px solid var(--glass-border);padding:0;max-height:0;overflow:hidden;transition:max-height var(--t-medium) var(--ease-out),padding var(--t-medium) var(--ease-out)}
+    .nav-toggle-checkbox:checked~.navbar-collapse-custom{max-height:300px;padding:1rem 0}
+    .navbar-nav-custom{flex-direction:column;align-items:stretch;padding:0 1rem}
+    .navbar-nav-custom .nav-link{padding:.75rem 1rem}
+    .card-column{padding:1.5rem 1.5rem .5rem}
+    .form-column{padding:1.5rem 1.5rem 2rem}
+}
+
+/* ── Móvil (576px) ── */
+@media(max-width:575.98px){
+    .main-content{padding:85px .75rem 1rem;align-items:flex-start}
+    .payment-container{border-radius:var(--radius-lg)}
+    .credit-card-wrapper{max-width:300px}
+    .card-number{font-size:1rem;gap:.5rem;letter-spacing:1px}
+    .card-chip{width:38px;height:28px}
+    .card-type{font-size:1.1rem}
+    .card-holder-name,.card-expiry{font-size:.7rem}
+    .card-label{font-size:.5rem}
+    .form-title{font-size:1.25rem}
+    .form-control-custom{padding:.65rem .85rem;padding-right:2.5rem;font-size:.9rem}
+    .btn-pay{padding:.75rem 1.5rem;font-size:.9rem}
+    .card-column{padding:1.25rem 1rem .5rem}
+    .form-column{padding:1rem 1.25rem 1.5rem}
+    .glass-footer{padding:1rem 0}
+    .footer-brand{font-size:.9rem}
+    /* Órbita más pequeña en móvil */
+    .share-orbit-container{--spread:45px}
+    .orbit-icon{width:30px;height:30px;font-size:.75rem}
+    .share-btn-center{width:40px;height:40px;font-size:1rem}
+}
+
+/* ── Móvil pequeño (400px) ── */
+@media(max-width:399.98px){
+    .credit-card-wrapper{max-width:260px}
+    .card-number{font-size:.85rem;gap:.35rem}
+    .credit-card-front,.credit-card-back{padding:1rem}
+}
+
+/* ── Landscape ── */
+@media(max-height:500px) and (orientation:landscape){
+    .main-content{padding-top:70px;padding-bottom:1rem;align-items:flex-start}
+    .payment-container{max-width:800px}
+    .credit-card-wrapper{max-width:240px}
+    .card-number{font-size:.85rem;gap:.4rem;letter-spacing:1px}
+    .credit-card-front,.credit-card-back{padding:1rem}
+    .card-chip{width:34px;height:26px}
+    .card-type{font-size:1rem}
+    .card-holder-name,.card-expiry{font-size:.65rem}
+    .card-label{font-size:.45rem}
+    .form-group{margin-bottom:.75rem}
+    .form-subtitle{margin-bottom:1rem}
+    .glass-navbar{padding:.4rem 0}
+}
+
+
+/* ============================================================
+   17. ACCESIBILIDAD — MOVIMIENTO REDUCIDO
+============================================================ */
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    .credit-card-flip{transition:none}
+}

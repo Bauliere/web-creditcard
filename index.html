@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="generator" content="Perplexity Computer">
+    <meta name="author" content="Perplexity Computer">
+    <meta property="og:see_also" content="https://www.perplexity.ai/computer">
+    <link rel="author" href="https://www.perplexity.ai/computer">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details — Santana Santanita</title>
+
+    <!-- ============================================================
+         FAVICON: Reemplaza el href con la ruta a tu favicon
+    ============================================================ -->
+    <link rel="icon" type="image/jpeg" href="./assets/img/fausto.jpeg">
+
+    <!-- ============================================================
+         FUENTES: Google Fonts — Inter (cuerpo) y Poppins (títulos)
+    ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ============================================================
+         BOOTSTRAP 5: Framework CSS para grid y responsividad
+    ============================================================ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ============================================================
+         BOOTSTRAP ICONS: Iconos vectoriales
+    ============================================================ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- ============================================================
+         ESTILOS PERSONALIZADOS
+         Contiene: tema glassmorphism, paletas de color,
+         animaciones CSS, responsive y documentación completa.
+    ============================================================ -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         NAVBAR: Barra de navegación con efecto glassmorphism
+         - Menú móvil CSS-only (checkbox hack, sin JS)
+    ============================================================ -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <svg class="brand-logo" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="SecurePay logo" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="8" width="32" height="20" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 14h32" stroke="currentColor" stroke-width="2"/>
+                    <rect x="6" y="20" width="8" height="3" rx="1" fill="currentColor" opacity="0.6"/>
+                    <circle cx="27" cy="21" r="3" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+                    <circle cx="31" cy="21" r="3" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+                </svg>
+                <span class="brand-text">Bauliere.site</span>
+            </a>
+            <!-- Toggler móvil CSS-only -->
+            <input type="checkbox" id="navToggle" class="nav-toggle-checkbox">
+            <label for="navToggle" class="navbar-toggler-custom" aria-label="Abrir menú">
+                <span class="toggler-bar"></span>
+                <span class="toggler-bar"></span>
+                <span class="toggler-bar"></span>
+            </label>
+            <div class="navbar-collapse-custom">
+                <ul class="navbar-nav-custom">
+                    <li><a class="nav-link active" href="#"><i class="bi bi-credit-card me-1"></i>Pago</a></li>
+                    <li><a class="nav-link" href="#"><i class="bi bi-shield-check me-1"></i>Seguridad</a></li>
+                    <li><a class="nav-link" href="#"><i class="bi bi-question-circle me-1"></i>Ayuda</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         CONTENIDO PRINCIPAL
+    ============================================================ -->
+    <main class="main-content">
+        <div class="container">
+            <div class="glass-card payment-container fade-in-up">
+                <div class="row g-0">
+
+                    <!-- ============================================================
+                         COLUMNA IZQUIERDA: Tarjeta de crédito interactiva
+                         - Los datos se reflejan en tiempo real al escribir
+                         - Flip 3D al enfocar el campo CVV (JS mínimo)
+                    ============================================================ -->
+                    <div class="col-lg-5 col-md-12 card-column">
+                        <div class="credit-card-wrapper">
+                            <div class="credit-card-flip" id="cardFlip">
+                                <!-- FRENTE -->
+                                <div class="credit-card-front">
+                                    <div class="card-bg-decoration">
+                                        <div class="card-circle card-circle-1"></div>
+                                        <div class="card-circle card-circle-2"></div>
+                                    </div>
+                                    <div class="card-top-row">
+                                        <div class="card-chip">
+                                            <div class="chip-line"></div>
+                                            <div class="chip-line"></div>
+                                            <div class="chip-line"></div>
+                                            <div class="chip-line"></div>
+                                        </div>
+                                        <div class="card-type" id="cardTypeDisplay">VISA</div>
+                                    </div>
+                                    <div class="card-number" id="cardNumberDisplay">
+                                        <span class="num-group" data-g="0">####</span>
+                                        <span class="num-group" data-g="1">####</span>
+                                        <span class="num-group" data-g="2">####</span>
+                                        <span class="num-group" data-g="3">####</span>
+                                    </div>
+                                    <div class="card-info-bottom">
+                                        <div class="card-holder-info">
+                                            <span class="card-label">CARD HOLDER</span>
+                                            <span class="card-holder-name" id="cardHolderDisplay">FULL NAME</span>
+                                        </div>
+                                        <div class="card-expiry-info">
+                                            <span class="card-label">EXPIRES</span>
+                                            <span class="card-expiry" id="cardExpiryDisplay">MM/YY</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- REVERSO -->
+                                <div class="credit-card-back">
+                                    <div class="card-bg-decoration">
+                                        <div class="card-circle card-circle-1"></div>
+                                        <div class="card-circle card-circle-2"></div>
+                                    </div>
+                                    <div class="magnetic-strip"></div>
+                                    <div class="cvv-section">
+                                        <span class="cvv-label">CVV</span>
+                                        <div class="cvv-band">
+                                            <span class="cvv-display" id="cvvDisplay">***</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-back-info">
+                                        <p class="card-back-text">Sitio seguro. Tus datos están protegidos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                         COLUMNA DERECHA: Formulario de pago
+                    ============================================================ -->
+                    <div class="col-lg-7 col-md-12 form-column">
+                        <h2 class="form-title">Payment Details</h2>
+                        <p class="form-subtitle">Ingresa la información de tu tarjeta para continuar</p>
+
+                        <form id="paymentForm" class="payment-form" novalidate>
+                            <!-- Número de tarjeta -->
+                            <div class="form-group">
+                                <label for="cardNumber" class="form-label-custom">
+                                    <i class="bi bi-credit-card-2-front me-1"></i>Card Number
+                                </label>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="cardNumber"
+                                           placeholder="1234 5678 9012 3456" maxlength="19"
+                                           autocomplete="cc-number" inputmode="numeric"
+                                           pattern="[0-9\s]{13,19}" required>
+                                    <span class="input-icon" id="cardTypeIcon"><i class="bi bi-credit-card"></i></span>
+                                </div>
+                            </div>
+
+                            <!-- Nombre del titular -->
+                            <div class="form-group">
+                                <label for="cardHolder" class="form-label-custom">
+                                    <i class="bi bi-person me-1"></i>Card Holder
+                                </label>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="cardHolder"
+                                           placeholder="SANTANA SANTANITA" maxlength="26"
+                                           autocomplete="cc-name" required>
+                                    <span class="input-icon"><i class="bi bi-person-check"></i></span>
+                                </div>
+                            </div>
+
+                            <!-- Expiración + CVV -->
+                            <div class="row g-3 expiry-cvv-row">
+                                <div class="col-sm-7">
+                                    <label class="form-label-custom">
+                                        <i class="bi bi-calendar3 me-1"></i>Expiration Date
+                                    </label>
+                                    <div class="d-flex gap-2">
+                                        <select class="form-control-custom select-custom" id="expMonth" required>
+                                            <option value="" disabled selected>Mo</option>
+                                            <option value="01">01</option><option value="02">02</option>
+                                            <option value="03">03</option><option value="04">04</option>
+                                            <option value="05">05</option><option value="06">06</option>
+                                            <option value="07">07</option><option value="08">08</option>
+                                            <option value="09">09</option><option value="10">10</option>
+                                            <option value="11">11</option><option value="12">12</option>
+                                        </select>
+                                        <select class="form-control-custom select-custom" id="expYear" required>
+                                            <option value="" disabled selected>Yr</option>
+                                            <option value="26">2026</option><option value="27">2027</option>
+                                            <option value="28">2028</option><option value="29">2029</option>
+                                            <option value="30">2030</option><option value="31">2031</option>
+                                            <option value="32">2032</option><option value="33">2033</option>
+                                            <option value="34">2034</option><option value="35">2035</option>
+                                            <option value="36">2036</option><option value="37">2037</option>
+                                            <option value="38">2038</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <label for="cvv" class="form-label-custom">
+                                        <i class="bi bi-lock me-1"></i>CVV
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <input type="text" class="form-control-custom" id="cvv"
+                                               placeholder="123" maxlength="4"
+                                               autocomplete="cc-csc" inputmode="numeric"
+                                               pattern="[0-9]{3,4}" required>
+                                        <span class="input-icon"><i class="bi bi-shield-lock"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botón de pago -->
+                            <button type="submit" class="btn-pay" id="btnPay">
+                                <i class="bi bi-lock-fill me-2"></i>Pay Now
+                            </button>
+                            <p class="security-text">
+                                <i class="bi bi-shield-fill-check me-1"></i>
+                                Tu información está protegida con encriptación SSL de 256 bits
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================================
+         FOOTER: Pie de página con botón de compartir expandible
+         - Botón central con ícono de compartir
+         - Al hacer hover, se despliegan las redes en órbita circular
+         - Animación pura CSS con :hover
+    ============================================================ -->
+    <footer class="glass-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    
+                    <small class="footer-dev">Instituto Tecnologico de pachuca</small>
+                </div>
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <!-- ============================================================
+                         BOTÓN DE COMPARTIR EXPANDIBLE (CSS-only hover)
+                         Al pasar el cursor, los 4 íconos salen en cruz
+                         Para añadir tus links → reemplaza los href="#"
+                    ============================================================ -->
+                    <div class="share-orbit-wrapper">
+                        <div class="share-orbit-container">
+                            <!-- Botón central -->
+                            <div class="share-btn-center">
+                                <i class="bi bi-share-fill"></i>
+                            </div>
+                            <!-- 1. LinkedIn (izquierda-arriba) -->
+                            <a href="#" class="orbit-icon orbit-1" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <!-- 2. GitHub (arriba centro) -->
+                            <a href="#" class="orbit-icon orbit-2" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <!-- 3. Hostinger (derecha-arriba) -->
+                            <a href="#" class="orbit-icon orbit-3" aria-label="Hostinger" target="_blank" rel="noopener noreferrer">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 2v9.2l4-2.3V5.3l4 2.3v5.5l-4 2.3-4-2.3V22l8 -4.6V6.9L4 2zm8 0l8 4.6v10.5L12 22v-4.6l4-2.3V9.6l-4-2.3V2z"/>
+                                </svg>
+                            </a>
+                            <!-- 4. Sitio web personal bauliere.site (abajo centro) -->
+                            <a href="https://bauliere.site/" class="orbit-icon orbit-4" aria-label="Mi sitio web" target="_blank" rel="noopener noreferrer">
+                                <img src="./assets/img/bauliere-icon.jpg" alt="Bauliere" class="orbit-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <small class="footer-dev">Created by Jesús Gabirel Amador Ramirez</small>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT MÍNIMO (incrustado para compatibilidad con deploy)
+         Solo lo necesario para:
+         1. Reflejar datos en la tarjeta en tiempo real
+         2. Formatear número de tarjeta con espacios
+         3. Detectar tipo de tarjeta (Visa/MC/Amex)
+         4. Flip de tarjeta al enfocar CVV
+         5. Scroll effect en navbar
+         Archivo fuente: ./assets/js/app.js
+    ============================================================ -->
+    <script>
+    /* ============================================================
+       JAVASCRIPT MÍNIMO — Solo funcionalidad que CSS no puede lograr
+       ============================================================
+       Autor: Santana Santanita | 2077 Empresa SA
+
+       Este archivo contiene SOLO lo necesario:
+       1. Reflejo de datos en tiempo real en la tarjeta
+       2. Formateo del número de tarjeta (espacios cada 4 dígitos)
+       3. Detección del tipo de tarjeta (Visa/MC/Amex/Discover)
+       4. Flip de la tarjeta al enfocar CVV
+       5. Efecto scroll en el navbar
+       
+       Todo lo demás (animaciones, hover, menú móvil, botón de
+       redes sociales) se maneja con CSS puro.
+    ============================================================ */
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /* ── Referencias al DOM ── */
+        var numInput   = document.getElementById('cardNumber');
+        var nameInput  = document.getElementById('cardHolder');
+        var monthSel   = document.getElementById('expMonth');
+        var yearSel    = document.getElementById('expYear');
+        var cvvInput   = document.getElementById('cvv');
+        var cardFlip   = document.getElementById('cardFlip');
+        var numDisplay = document.getElementById('cardNumberDisplay');
+        var nameDisp   = document.getElementById('cardHolderDisplay');
+        var expDisp    = document.getElementById('cardExpiryDisplay');
+        var cvvDisp    = document.getElementById('cvvDisplay');
+        var typeDisp   = document.getElementById('cardTypeDisplay');
+        var typeIcon   = document.getElementById('cardTypeIcon');
+        var groups     = numDisplay.querySelectorAll('.num-group');
+        var nav        = document.querySelector('.glass-navbar');
+
+        /* ============================================================
+           FORMATEAR NÚMERO (espacios cada 4 dígitos)
+           Para cambiar el separador → reemplaza ' ' por otro carácter
+        ============================================================ */
+        function formatNum(v) {
+            var d = v.replace(/\D/g, '').slice(0, 16);
+            return d.replace(/(\d{4})(?=\d)/g, '$1 ');
+        }
+
+        /* ============================================================
+           DETECTAR TIPO DE TARJETA
+           Para agregar más tipos → añade un bloque if con el patrón
+        ============================================================ */
+        function detectType(n) {
+            var d = n.replace(/\D/g, '');
+            if (/^4/.test(d))                             return { t: 'VISA',  i: 'bi-credit-card-2-front-fill' };
+            if (/^(5[1-5]|22[2-9]|2[3-6]|27[01]|2720)/.test(d)) return { t: 'MC',    i: 'bi-credit-card-fill' };
+            if (/^3[47]/.test(d))                         return { t: 'AMEX',  i: 'bi-credit-card-2-back-fill' };
+            if (/^(6011|65)/.test(d))                     return { t: 'DISC',  i: 'bi-credit-card-fill' };
+            return { t: 'VISA', i: 'bi-credit-card' };
+        }
+
+        /* ============================================================
+           ACTUALIZAR NÚMERO EN LA TARJETA
+           Cada grupo de 4 dígitos se actualiza individualmente.
+           Si cambia, se aplica la animación CSS 'pop' (digitPop).
+        ============================================================ */
+        function updateNum(v) {
+            var d = v.replace(/\D/g, '').padEnd(16, '#');
+            for (var i = 0; i < 4; i++) {
+                var g = d.slice(i * 4, i * 4 + 4);
+                var s = groups[i];
+                if (s.textContent !== g) {
+                    s.textContent = g;
+                    s.classList.remove('pop');
+                    void s.offsetWidth; /* Forzar reflow para reiniciar animación */
+                    s.classList.add('pop');
+                }
+            }
+            var tp = detectType(v);
+            if (typeDisp.textContent !== tp.t) {
+                typeDisp.style.opacity = '0';
+                setTimeout(function () { typeDisp.textContent = tp.t; typeDisp.style.opacity = '1'; }, 100);
+            }
+            typeIcon.innerHTML = '<i class="bi ' + tp.i + '"></i>';
+        }
+
+        /* ============================================================
+           ACTUALIZAR NOMBRE DEL TITULAR
+           Aplica animación CSS 'slide' (textSlide) al cambiar.
+        ============================================================ */
+        function updateName(v) {
+            var d = v.trim() ? v.toUpperCase() : 'FULL NAME';
+            if (nameDisp.textContent !== d) {
+                nameDisp.textContent = d;
+                nameDisp.classList.remove('slide');
+                void nameDisp.offsetWidth;
+                nameDisp.classList.add('slide');
+            }
+        }
+
+        /* ============================================================
+           ACTUALIZAR FECHA DE EXPIRACIÓN
+        ============================================================ */
+        function updateExp() {
+            var m = monthSel.value || 'MM';
+            var y = yearSel.value || 'YY';
+            var d = m + '/' + y;
+            if (expDisp.textContent !== d) {
+                expDisp.textContent = d;
+                expDisp.classList.remove('slide');
+                void expDisp.offsetWidth;
+                expDisp.classList.add('slide');
+            }
+        }
+
+        /* ============================================================
+           ACTUALIZAR CVV (asteriscos)
+        ============================================================ */
+        function updateCVV(v) {
+            var d = v.replace(/\D/g, '');
+            cvvDisp.textContent = d ? '*'.repeat(d.length) : '***';
+        }
+
+        /* ============================================================
+           EVENT LISTENERS — Reflejan datos en tiempo real
+        ============================================================ */
+        numInput.addEventListener('input', function (e) {
+            e.target.value = formatNum(e.target.value);
+            updateNum(e.target.value);
+        });
+
+        nameInput.addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]/g, '');
+            updateName(e.target.value);
+        });
+
+        monthSel.addEventListener('change', updateExp);
+        yearSel.addEventListener('change', updateExp);
+
+        cvvInput.addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+            updateCVV(e.target.value);
+        });
+
+        /* ============================================================
+           FLIP DE LA TARJETA — Al enfocar CVV se gira al reverso
+        ============================================================ */
+        cvvInput.addEventListener('focus', function () { cardFlip.classList.add('flipped'); });
+        cvvInput.addEventListener('blur', function () { cardFlip.classList.remove('flipped'); });
+        [numInput, nameInput, monthSel, yearSel].forEach(function (el) {
+            el.addEventListener('focus', function () { cardFlip.classList.remove('flipped'); });
+        });
+
+        /* ============================================================
+           NAVBAR SCROLL — Oscurece el navbar al hacer scroll
+           Para cambiar la distancia de activación → modifica 50
+        ============================================================ */
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(26,10,16,0.9)';
+                nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+            } else {
+                nav.style.background = '';
+                nav.style.boxShadow = '';
+            }
+        }, { passive: true });
+
+        /* ============================================================
+           VALIDACIÓN Y SUBMIT
+           Validación básica con animación shake en campos inválidos.
+        ============================================================ */
+        document.getElementById('paymentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var ok = true;
+            var fields = [numInput, nameInput, monthSel, yearSel, cvvInput];
+
+            fields.forEach(function (f) { f.classList.remove('is-invalid', 'shake'); });
+
+            if (numInput.value.replace(/\D/g, '').length < 16) { mark(numInput); ok = false; }
+            if (nameInput.value.trim().length < 2) { mark(nameInput); ok = false; }
+            if (!monthSel.value) { mark(monthSel); ok = false; }
+            if (!yearSel.value) { mark(yearSel); ok = false; }
+            if (cvvInput.value.replace(/\D/g, '').length < 3) { mark(cvvInput); ok = false; }
+
+            if (ok) {
+                var btn = document.getElementById('btnPay');
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+                setTimeout(function () {
+                    btn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Payment Successful!';
+                    btn.classList.add('success');
+                    setTimeout(function () {
+                        btn.innerHTML = '<i class="bi bi-lock-fill me-2"></i>Pay Now';
+                        btn.classList.remove('success');
+                        btn.disabled = false;
+                        btn.style.background = '';
+                    }, 3000);
+                }, 2000);
+            }
+        });
+
+        function mark(el) {
+            el.classList.add('is-invalid', 'shake');
+            setTimeout(function () { el.classList.remove('shake'); }, 500);
+        }
+
+    }); /* Fin DOMContentLoaded */
+    </script>
+</body>
+</html>
