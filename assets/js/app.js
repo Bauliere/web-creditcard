@@ -1,19 +1,3 @@
-/* ============================================================
-   JAVASCRIPT MÍNIMO — Solo funcionalidad que CSS no puede lograr
-   ============================================================
-   Autor: Santana Santanita | 2077 Empresa SA
-
-   Este archivo contiene SOLO lo necesario:
-   1. Reflejo de datos en tiempo real en la tarjeta
-   2. Formateo del número de tarjeta (espacios cada 4 dígitos)
-   3. Detección del tipo de tarjeta (Visa/MC/Amex/Discover)
-   4. Flip de la tarjeta al enfocar CVV
-   5. Efecto scroll en el navbar
-   
-   Todo lo demás (animaciones, hover, menú móvil, botón de
-   redes sociales) se maneja con CSS puro.
-============================================================ */
-
 document.addEventListener('DOMContentLoaded', function () {
 
     /* ── Referencias al DOM ── */
